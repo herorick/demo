@@ -1,6 +1,6 @@
 import React from "react";
-import MainLayout from "../layouts/mainLayout.js";
 import Head from "next/head";
+import MainLayout from "../layouts/mainLayout";
 
 const Contact = (props) => {
   console.log(props.users);

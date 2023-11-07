@@ -1,5 +1,5 @@
 import Link from "next/link";
-import MainLayout from "../layouts/mainLayout.js";
+import MainLayout from "../layouts/mainLayout";
 import Head from "next/head";
 
 const Home = () => {

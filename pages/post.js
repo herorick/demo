@@ -1,5 +1,5 @@
 import React from "react";
-import MainLayout from "../layouts/mainLayout.js";
+import MainLayout from "../layouts/mainLayout";
 import Head from "next/head";
 
 const Post = (props) => {
