@@ -3,7 +3,7 @@ import LoginBtn from "../components/login-btn";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
-const login = () => {
+const Login = () => {
   const { data: session } = useSession();
   const router = useRouter();
 
@@ -16,4 +16,4 @@ const login = () => {
   return <LoginBtn />;
 };
 
-export default login;
+export default Login;
