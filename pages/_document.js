@@ -20,9 +20,9 @@ export default function Document() {
         <NextScript />
         <script async src="/assets/js/jquery.min.js" />
         <script async src="/assets/js/bootstrap.min.js" />
-        <script async src="/assets/js/jqBootstrapValidation.js" />
         <script async src="/assets/js/contact_me.js" />
         <script async src="/assets/js/clean-blog.js" />
+        <script async src="/assets/js/jqBootstrapValidation.js" />
       </body>
     </Html>
   );

@@ -1,31 +1,26 @@
 import React from "react";
-import MainLayout from "../layouts/mainLayout";
+import MainLayout from "../../layouts/mainLayout";
 import Head from "next/head";
 
 const Post = (props) => {
-  console.log(props.posts);
+  console.log(props.post);
+  const { post } = props
   return (
     <>
       <Head>
-        <title>Sample Post</title>
+        <title>{post.title}</title>
       </Head>
       <header
         className="intro-header"
-        style={{ backgroundImage: 'url("assets/images/post-bg.jpg")' }}
+        style={{ backgroundImage: 'url("/assets/images/post-bg.jpg")' }}
       >
         <div className="container">
           <div className="row">
             <div className="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
               <div className="post-heading">
                 <h1>
-                  Man must explore, and this is exploration at its greatest
+                  {post.title}
                 </h1>
-                <h2 className="subheading">
-                  Problems look mighty small from 150 miles up
-                </h2>
-                <span className="meta">
-                  Posted by <a href="#">Start Bootstrap</a> on August 24, 2014
-                </span>
               </div>
             </div>
           </div>
@@ -102,10 +97,11 @@ const Post = (props) => {
                 finger it would crumble and fall apart. Seeing this has to
                 change a man.
               </p>
+              <h1>123</h1>
               <a href="#">
                 <img
                   className="img-responsive"
-                  src="img/post-sample-image.jpg"
+                  src="/assets/images/post-sample-image.jpg"
                   alt=""
                 />
               </a>
@@ -141,11 +137,31 @@ const Post = (props) => {
   );
 };
 
-export async function getStaticProps() {
+// This function gets called at build time
+export async function getStaticPaths() {
   const data = await fetch("https://jsonplaceholder.typicode.com/posts");
   const posts = await data.json();
+  const params = posts.map((post) => ({
+    params: {
+      id: post.id + "",
+    },
+  }));
+
+
   return {
-    props: { posts },
+    paths: params,
+    fallback: true,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const data = await fetch(
+    `https://jsonplaceholder.typicode.com/posts/${params.id}`
+  );
+  const post = await data.json();
+  return {
+    props: { post },
+    revalidate: 1,
   };
 }
 
