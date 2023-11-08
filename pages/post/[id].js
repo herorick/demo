@@ -161,7 +161,7 @@ export async function getStaticProps({ params }) {
   const post = await data.json();
   return {
     props: { post },
-    revalidate: 1,
+    revalidate: 1, 
   };
 }
 
